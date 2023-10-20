@@ -1,0 +1,53 @@
+online_timer:
+  reg_help_msg: 显示玩家总在线时长
+  help_msg: |
+    §7-----§r MCDR {name} v{version} §7-----§r
+    一个查看玩家总在线时长的插件
+    §d【指令说明】§r
+    §7!!oltime help§r 显示帮助信息
+    §7!!oltime§r §e<玩家>§r 查看玩家总在线时长，不添加参数时为查看自己的总在线时长
+    §7!!oltop§r §e<页数>§r查看在线时长榜，不添加参数默认查看第一页
+
+  time_format:
+    day: 
+      text: "{0:02d} day"
+      plural: "{0:02d} days"
+    hour: 
+      text: "{0:02d} h"
+      plural: "{0:02d} h"
+    minute: 
+      text: "{0:02d} min" 
+      plural: "{0:02d} min"
+    second: 
+      text: "{0:02d} s"
+      plural: "{0:02d} s"
+  oltime:
+    player: 
+      message: "{} 的总在线时长：{}"
+      error: "找不到玩家 {} 的记录"
+    self: 
+      message: "你的总在线时长：{}"
+      error: "找不到你登录的记录，你是怎么进来的？"
+  oltop:
+    header:  "=========§d§l在线时间排行榜§r========="
+    rank: "{index:2d}. §e{name}§r {time}"
+    footage: "----------§2Page§r(§a{0:02d}§r/§a{1:02d}§r)----------"
+
+
+  # logger section
+  logger:
+    OnlineTimeDB:
+      init: "初始化数据库..."
+      get:
+        online_time: "尝试获取玩家 %s 的上线时间信息"
+        olt_top: "尝试获取排行榜……"
+      history:
+        reload:
+          start: "开始读取历史日志"
+          complete: "历史日志读取完成"
+          error: "历史日志读取失败"
+    load_data:
+      reload_data: "重载之前的数据"
+      load_json: 
+        no_json: "没有找到数据存储文件"
+        load: "加载数据文件"

@@ -1,0 +1,19 @@
+{
+    "id": "online_timer",
+    "version": "1.1.0",
+    "name": "Online Timer",
+    "description": {
+        "zh_cn": "查看玩家总在线时长",
+        "en_us": "To see how much time players have spent on this server"
+    },
+    "author": "FVortex",
+    "link": "",
+    "entrypoint": "online_timer",
+    "archive_name": "OnlineTimer-v{version}",
+    "dependencies": {
+        "mcdreforged": ">=2.0.0"
+    },
+    "resources": [
+        "lang"
+    ]
+}
