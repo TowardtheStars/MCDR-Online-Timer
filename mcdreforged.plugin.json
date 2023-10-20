@@ -7,7 +7,7 @@
         "en_us": "To see how much time players have spent on this server"
     },
     "author": "FVortex",
-    "link": "",
+    "link": "https://github.com/TowardtheStars/MCDR-Online-Timer",
     "entrypoint": "online_timer",
     "archive_name": "OnlineTimer-v{version}",
     "dependencies": {
