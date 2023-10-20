@@ -1,7 +1,6 @@
 
 import datetime, parse, os, gzip
 from typing import Optional, Tuple, Union
-from operator import xor
 import zipfile
 from os.path import join as pathjoin, abspath
 from dataclasses import dataclass
