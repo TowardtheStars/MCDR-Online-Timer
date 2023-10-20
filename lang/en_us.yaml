@@ -1,35 +1,49 @@
 online_timer:
-  reg_help_msg: 显示玩家总在线时长
   help_msg: |
-    §7-----§r MCDR {name} v{version} §7-----§r
-    一个查看玩家总在线时长的插件
-    §d【指令说明】§r
-    §7!!oltime help§r 显示帮助信息
-    §7!!oltime§r §e<玩家>§r 查看玩家总在线时长，不添加参数时为查看自己的总在线时长
-    §7!!oltop§r §e<页数>§r查看在线时长榜，不添加参数默认查看第一页
+    §7-----§r MCDR {metadata.name} v{metadata.version} §7-----§r
+    A plugin to look up how much time players have spent
+    §d【Commands】§r
+    §7!!olt§r §e<player>§r Get online time for §e<player>§r. Get yours if §e<player>§r is not specified.
+    §7!!oltop§r §e<page>§r Show the top players in online time. Show first page if not §e<page>§r not specified.
+    §7!!oltime help§r Show help information.
+  help_msg_op: §7!!oltime reload§r Load history from Minecraft logs §c(OPs only command)§r
+
 
   time_format:
     day: 
-      text: "{0:02d} day"
-      plural: "{0:02d} days"
+      text: "§b{0:02d}§r day"
+      plural: "§b{0:02d}§r days"
     hour: 
-      text: "{0:02d} h"
-      plural: "{0:02d} h"
+      text: "§b{0:02d}§r h"
+      plural: "§b{0:02d}§r h"
     minute: 
-      text: "{0:02d} min" 
-      plural: "{0:02d} min"
+      text: "§b{0:02d}§r min" 
+      plural: "§b{0:02d}§r min"
     second: 
-      text: "{0:02d} s"
-      plural: "{0:02d} s"
+      text: "§b{0:02d}§r sec"
+      plural: "§b{0:02d}§r sec"
+
   oltime:
+    reg_help_msg: Show {metadata.name} help information.
+    reload:
+      success: History load complete
+      error:
+        no_permission: §4You do not have permission to do this.§r
+        failed: §cLoad history failded, see logs for details§r
+  olt:
+    reg_help_msg: Show online time for player
     player: 
-      message: "{} 的总在线时长：{}"
-      error: "找不到玩家 {} 的记录"
+      message: "Online time of §e{playerinfo.name}§r: {playerinfo.formatted_onlinetime}"
+      error: "Cannot find player record for {}"
     self: 
-      message: "你的总在线时长：{}"
-      error: "找不到你登录的记录，你是怎么进来的？"
+      message: "Your total online time: {playerinfo.formatted_onlinetime}"
+      error: 
+        player: "Cannot find your record. How did you get in here?"
+        console: "§cYou are not even a player. There cannot be a record of online time.§r"
+
   oltop:
-    header:  "=========§d§l在线时间排行榜§r========="
+    reg_help_msg: Show top online time players
+    header:  "=========§d§lTop Online Players§r========="
     rank: "{index:2d}. §e{name}§r {time}"
     footage: "----------§2Page§r(§a{0:02d}§r/§a{1:02d}§r)----------"
 
@@ -37,17 +51,17 @@ online_timer:
   # logger section
   logger:
     OnlineTimeDB:
-      init: "初始化数据库..."
+      init: "Initialize database..."
       get:
-        online_time: "尝试获取玩家 %s 的上线时间信息"
-        olt_top: "尝试获取排行榜……"
+        online_time: "Try to get online time for {}"
+        olt_top: "Try to get top list……"
       history:
         reload:
-          start: "开始读取历史日志"
-          complete: "历史日志读取完成"
-          error: "历史日志读取失败"
+          start: "Start to load history logs"
+          complete: "History load complete"
+          error: "History load failed"
     load_data:
-      reload_data: "重载之前的数据"
+      reload_data: "Reload previous data"
       load_json: 
-        no_json: "没有找到数据存储文件"
-        load: "加载数据文件"
+        no_json: "Cannot find data file"
+        load: "Loading data file"
